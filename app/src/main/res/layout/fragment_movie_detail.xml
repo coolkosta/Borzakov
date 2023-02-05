@@ -3,7 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.moviedetailfragment.MovieDetailFragment">
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/ic_arrow_back"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="57dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/repository_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,10 +30,10 @@
         <ImageView
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="533dp"
-            android:fitsSystemWindows="true"
-            android:scaleType="fitCenter"
-            tools:src="@drawable/poster_test" />
+            android:layout_height="550dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/poster_test"
+            android:contentDescription="@string/banner"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -62,8 +79,9 @@
             android:textSize="14sp"
             tools:text="Страны: США" />
 
-
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </FrameLayout>

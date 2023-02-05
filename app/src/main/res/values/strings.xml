@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_fragment_screen">Популярные</string>
     <string name="search">search</string>
+    <string name="back_button">back button</string>
+    <string name="banner">banner</string>
 </resources>
