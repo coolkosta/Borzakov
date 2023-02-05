@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.coolkosta.cinematest.R
-import ru.coolkosta.cinematest.domain.models.Film
 import ru.coolkosta.cinematest.domain.models.TopFilmsResponse
 
 class FilmListAdapter : RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {

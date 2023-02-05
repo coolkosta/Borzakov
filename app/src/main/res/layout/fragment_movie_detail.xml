@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.moviedetailfragment.MovieDetailFragment">
 
     <Button
@@ -18,8 +17,7 @@
         android:id="@+id/repository_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_marginBottom="16dp">
 
 
     <LinearLayout
@@ -82,6 +80,5 @@
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </FrameLayout>

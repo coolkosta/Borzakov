@@ -35,8 +35,19 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
         binding.recyclerViewContainer.adapter = listOfFilmsAdapter
         layoutManager = LinearLayoutManager(context)
         binding.recyclerViewContainer.layoutManager = layoutManager
-        viewModel.cinemaListState.observe(viewLifecycleOwner) {
-            listOfFilmsAdapter.getData(it)
+        viewModel.cinemaListState.observe(viewLifecycleOwner) {data ->
+           listOfFilmsAdapter.getData(data)
+
+            val list = viewModel.emptyList.value
+
+            with(binding.stateViewLayout) {
+                stateView.visibility =
+                    if ( data == list ) View.VISIBLE else View.GONE
+                tryAgainBtn.setOnClickListener {
+                    viewModel.tryLoadAgain()
+                }
+            }
+
         }
 
         listOfFilmsAdapter.setOnClickListener(onClick)

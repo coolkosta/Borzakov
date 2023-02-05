@@ -8,6 +8,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.coolkosta.cinematest.domain.models.Film
 import ru.coolkosta.cinematest.domain.repository.FilmsRepository
@@ -16,7 +17,7 @@ class MovieDetailFragmentViewModel @AssistedInject constructor(
     @Assisted savedStateHandle: SavedStateHandle, private val moviesRepository: FilmsRepository
 ) : ViewModel() {
 
-    private val compositeDisposable = io.reactivex.rxjava3.disposables.CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
     private val _cinemaState = MutableLiveData<Film>()
     val cinemaState: LiveData<Film>

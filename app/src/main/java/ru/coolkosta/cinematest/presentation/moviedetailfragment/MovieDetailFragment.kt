@@ -2,9 +2,7 @@ package ru.coolkosta.cinematest.presentation.moviedetailfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import ru.coolkosta.cinematest.R
@@ -35,27 +33,27 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getFilmById(filmId!!)
-        viewModel.cinemaState.observe(viewLifecycleOwner) {
+        viewModel.cinemaState.observe(viewLifecycleOwner) { film ->
 
-            binding.tvTitle.text = it.title
-            binding.tvDescription.text = it.description
+            binding.tvTitle.text = film.title
+            binding.tvDescription.text = film.description
 
-            var genres= ""
-            it.genres.forEachIndexed { index, film ->
+            var genres = ""
+            film.genres.forEachIndexed { index, it ->
                 if (index != 0) genres += ", "
-                genres += film.genre
+                genres += it.genre
             }
             binding.tvGenre.text = "Жанры: $genres"
 
             var countries = ""
-            it.countries.forEachIndexed{index, film ->
-                if (index !=0 ) countries += ", "
-                countries += film.country
+            film.countries.forEachIndexed { index, it ->
+                if (index != 0) countries += ", "
+                countries += it.country
             }
             binding.tvCountry.text = "Страны: $countries"
 
             Glide.with(this)
-                .load(it.posterUrl)
+                .load(film.posterUrl)
                 .into(binding.banner)
         }
 
@@ -63,7 +61,6 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
-
 
     companion object {
         @JvmStatic

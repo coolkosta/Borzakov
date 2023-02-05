@@ -8,6 +8,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.coolkosta.cinematest.domain.models.TopFilmsResponse
 import ru.coolkosta.cinematest.domain.repository.FilmsRepository
@@ -19,11 +20,19 @@ class PopularFragmentViewModel @AssistedInject constructor(
 
     private val _cinemaListState = MutableLiveData<List<TopFilmsResponse>>()
     val cinemaListState: LiveData<List<TopFilmsResponse>>
-    get() = _cinemaListState
-    private val compositeDisposable = io.reactivex.rxjava3.disposables.CompositeDisposable()
+        get() = _cinemaListState
+    private val compositeDisposable = CompositeDisposable()
+
+    private val _emptyList = MutableLiveData<List<TopFilmsResponse>>()
+    val emptyList: LiveData<List<TopFilmsResponse>>
+        get() = _emptyList
 
     init {
 
+        getApi()
+    }
+
+    fun tryLoadAgain() {
         getApi()
     }
 
@@ -35,7 +44,8 @@ class PopularFragmentViewModel @AssistedInject constructor(
                 .subscribe({
                     _cinemaListState.value = it.films
                 }, {
-
+                    _emptyList.value = emptyList()
+                    _cinemaListState.value = emptyList()
                 })
         )
     }

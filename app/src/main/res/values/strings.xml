@@ -6,4 +6,6 @@
     <string name="search">search</string>
     <string name="back_button">back button</string>
     <string name="banner">banner</string>
+    <string name="error_message_net">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="retry">Повторить</string>
 </resources>
